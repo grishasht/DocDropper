@@ -42,7 +42,7 @@ public class User implements IUser
         this.email = email;
     }
 
-    public User(String name, String surname, String login, String email, String city) {
+    public User(String name, String surname, String login, String email) {
         this.name = name;
         this.surname = surname;
         this.login = login;
