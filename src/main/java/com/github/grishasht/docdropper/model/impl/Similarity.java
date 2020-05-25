@@ -1,0 +1,12 @@
+package com.github.grishasht.docdropper.model.impl;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.github.grishasht.docdropper.model.ISimilarity;
+
+@Entity
+@Table(name = "similarities")
+public class Similarity implements ISimilarity
+{
+}
