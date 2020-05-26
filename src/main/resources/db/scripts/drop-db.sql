@@ -1,0 +1,5 @@
+DROP TABLE users CASCADE;
+
+DROP TABLE similarities CASCADE;
+
+DROP TABLE documents CASCADE;

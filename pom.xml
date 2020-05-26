@@ -16,6 +16,18 @@
 
     <properties>
         <java.version>11</java.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <version.log4j>1.2.17</version.log4j>
+        <org.json.version>20180813</org.json.version>
+        <gson.version>2.8.5</gson.version>
+        <jwt.version>0.9.1</jwt.version>
+        <version.auth0>1.14.3</version.auth0>
+        <version.auth0.spring.security.api>1.2.5</version.auth0.spring.security.api>
+        <version.mvc.auth.commons>1.2.0</version.mvc.auth.commons>
+        <google.api.client.version>1.23.0</google.api.client.version>
+        <google.api.drive.version>v3-rev136-1.23.0</google.api.drive.version>
+        <validation.api.version>2.0.1.Final</validation.api.version>
     </properties>
 
     <build>
@@ -79,20 +91,43 @@
         </dependency>
 
         <!--        Libs-->
+        <!-- Auth0 -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>auth0</artifactId>
+            <version>${version.auth0}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>auth0-spring-security-api</artifactId>
+            <version>${version.auth0.spring.security.api}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>mvc-auth-commons</artifactId>
+            <version>${version.mvc.auth.commons}</version>
+        </dependency>
+        <!--        JWT-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jwt.version}</version>
+        </dependency>
+        <!--        Google API-->
         <dependency>
             <groupId>com.google.api-client</groupId>
             <artifactId>google-api-client</artifactId>
-            <version>1.23.0</version>
+            <version>${google.api.client.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.oauth-client</groupId>
             <artifactId>google-oauth-client-jetty</artifactId>
-            <version>1.23.0</version>
+            <version>${google.api.client.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-drive</artifactId>
-            <version>v3-rev136-1.23.0</version>
+            <version>${google.api.drive.version}</version>
         </dependency>
 
         <dependency>
@@ -103,7 +138,7 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
+            <version>${validation.api.version}</version>
         </dependency>
     </dependencies>
 
