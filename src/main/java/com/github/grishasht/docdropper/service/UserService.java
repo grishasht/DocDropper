@@ -6,8 +6,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import com.github.grishasht.docdropper.controller.exception.InvalidUserDataException;
-import com.github.grishasht.docdropper.model.IUser;
-import com.github.grishasht.docdropper.model.impl.User;
+import com.github.grishasht.docdropper.model.User;
 import com.github.grishasht.docdropper.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,7 +44,7 @@ public class UserService
         return Pattern.matches(PATTERN_PASSWORD, password);
     }
 
-    public Boolean validateUserData(IUser user) {
+    public Boolean validateUserData(User user) {
 
         final StringBuilder errorMessage = new StringBuilder();
 
@@ -85,7 +84,7 @@ public class UserService
         return true;
     }
 
-    public IUser createUser(IUser user) {
+    public User createUser(User user) {
 
         final UUID newUserGuid = UUID.randomUUID();
 
@@ -102,16 +101,16 @@ public class UserService
         return newUser;
     }
 
-    public IUser getUserInfo(UUID guid) {
+    public User getUserInfo(UUID guid) {
 
         return userRepository.getUserByGuidNoPassword(guid);
     }
 
-    public IUser getUserByLogin(String login) {
+    public User getUserByLogin(String login) {
         return userRepository.getUserByLogin(login);
     }
 
-    public IUser updateUserByGuid(IUser newUserInfo, UUID userGuid) {
+    public User updateUserByGuid(User newUserInfo, UUID userGuid) {
         final Integer userIdByGuid = userRepository.getUserByGuid(userGuid).getId();
 
         final User newUser = new User()
@@ -128,8 +127,8 @@ public class UserService
         return newUser;
     }
 
-    public IUser removeUserByGuid(UUID guid) {
-        final IUser userToBeRemoved = userRepository.getUserByGuid(guid);
+    public User removeUserByGuid(UUID guid) {
+        final User userToBeRemoved = userRepository.getUserByGuid(guid);
 
         userRepository.removeUserByGuid(guid);
 

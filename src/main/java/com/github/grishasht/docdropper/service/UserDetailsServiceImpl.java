@@ -2,7 +2,6 @@ package com.github.grishasht.docdropper.service;
 
 import java.util.Collections;
 
-import com.github.grishasht.docdropper.model.IUser;
 import com.github.grishasht.docdropper.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -27,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException
     {
 
-        final IUser user = userRepository.getUserByLogin(login);
+        final com.github.grishasht.docdropper.model.User user = userRepository.getUserByLogin(login);
 
         if (user == null)
         {

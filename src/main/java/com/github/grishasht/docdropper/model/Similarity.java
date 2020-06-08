@@ -1,4 +1,4 @@
-package com.github.grishasht.docdropper.model.impl;
+package com.github.grishasht.docdropper.model;
 
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -6,11 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.github.grishasht.docdropper.model.ISimilarity;
-
 @Entity
 @Table(name = "similarities")
-public class Similarity implements ISimilarity
+public class Similarity
 {
     @Id
     @GeneratedValue
@@ -23,52 +21,44 @@ public class Similarity implements ISimilarity
     {
     }
 
-    @Override
     public Integer getId()
     {
         return id;
     }
 
-    @Override
     public Similarity setId(Integer id)
     {
         this.id = id;
         return this;
     }
 
-    @Override
     public Long getIdFirstDoc()
     {
         return idFirstDoc;
     }
 
-    @Override
     public Similarity setIdFirstDoc(Long idFirstDoc)
     {
         this.idFirstDoc = idFirstDoc;
         return this;
     }
 
-    @Override
     public Long getIdSecondDoc()
     {
         return idSecondDoc;
     }
 
-    @Override
     public Similarity setIdSecondDoc(Long idSecondDoc)
     {
         this.idSecondDoc = idSecondDoc;
         return this;
     }
 
-    @Override
     public Float getCount()
     {
         return count;
     }
 
-    @Override
     public Similarity setCount(Float count)
     {
         this.count = count;

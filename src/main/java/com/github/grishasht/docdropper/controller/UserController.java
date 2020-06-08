@@ -7,8 +7,7 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 
 import com.github.grishasht.docdropper.controller.exception.InvalidUserDataException;
-import com.github.grishasht.docdropper.model.IUser;
-import com.github.grishasht.docdropper.model.impl.User;
+import com.github.grishasht.docdropper.model.User;
 import com.github.grishasht.docdropper.service.UserService;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +52,7 @@ public class UserController
         String msg = String.format("User %s credential data is successfully validated", requestUserLogin);
         LOGGER.info(msg);
 
-        final IUser newUser = userService.createUser(requestUser);
+        final User newUser = userService.createUser(requestUser);
 
         msg = String.format("User %s info successfully created!", newUser.getLogin());
         LOGGER.info(msg);
@@ -65,10 +64,10 @@ public class UserController
 
 
     @GetMapping("/login")
-    public String userLogin(@RequestBody User user){
+    public String login(@RequestBody User user){
 
         final String userLogin = user.getLogin();
-        final IUser userByLogin = userService.getUserByLogin(userLogin);
+        final User userByLogin = userService.getUserByLogin(userLogin);
 
         final String msg = String.format("User %s guild retrieved!", userLogin);
         LOGGER.info(msg);
@@ -77,9 +76,9 @@ public class UserController
     }
 
     @GetMapping("/{userGuid}/personal")
-    public IUser getAllUserInfo(@PathVariable UUID userGuid) {
+    public User getInfo(@PathVariable UUID userGuid) {
 
-        final IUser user = userService.getUserInfo(userGuid);
+        final User user = userService.getUserInfo(userGuid);
 
         final String msg = String.format("User %s info successfully retrieved from the database", user.getLogin());
         LOGGER.info(msg);
@@ -88,7 +87,7 @@ public class UserController
     }
 
     @PutMapping("/{userGuid}/personal")
-    public void updateUserInfo(@RequestBody @Valid User newUserInfo, @PathVariable UUID userGuid) {
+    public void updateInfo(@RequestBody @Valid User newUserInfo, @PathVariable UUID userGuid) {
 
         userService.updateUserByGuid(newUserInfo, userGuid);
 
@@ -99,14 +98,14 @@ public class UserController
     @DeleteMapping("/{userGuid}/personal")
     public void removeUser(@PathVariable UUID userGuid) {
 
-        final IUser removedUser = userService.removeUserByGuid(userGuid);
+        final User removedUser = userService.removeUserByGuid(userGuid);
 
         final String msg = String.format("User %s info successfully removed from the database", removedUser.getLogin());
         LOGGER.info(msg);
 
     }
 
-    private JSONObject getGuidJson(IUser user) {
+    private JSONObject getGuidJson(User user) {
         final JSONObject responseJson = new JSONObject();
 
         responseJson.put(RESPONSE_FIELD_GUID, user.getGuid().toString());

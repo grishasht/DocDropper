@@ -25,5 +25,5 @@ CREATE TABLE documents
     format             varchar(10),
     date_uploaded      timestamp   not null,
     date_last_modified timestamp   not null,
-    id_user            int8 references users (id)
+    guid_user          uuid references users (guid)
 );

@@ -1,6 +1,6 @@
 package com.github.grishasht.docdropper.repository;
 
-import com.github.grishasht.docdropper.model.impl.Similarity;
+import com.github.grishasht.docdropper.model.Similarity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.github.grishasht.docdropper.model.impl;
+package com.github.grishasht.docdropper.model;
 
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -11,11 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.github.grishasht.docdropper.model.IDocument;
-
 @Entity
 @Table(name = "documents")
-public class Document implements IDocument
+public class Document
 {
     @Id
     @GeneratedValue
@@ -29,111 +27,95 @@ public class Document implements IDocument
     @ManyToOne(
             cascade = CascadeType.ALL
     )
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "guid_user")
     private User user;
 
     public Document()
     {
     }
 
-    @Override
     public Integer getId()
     {
         return id;
     }
 
-    @Override
     public Document setId(Integer id)
     {
         this.id = id;
         return this;
     }
 
-    @Override
     public UUID getGuid()
     {
         return guid;
     }
 
-    @Override
     public Document setGuid(UUID guid)
     {
         this.guid = guid;
         return this;
     }
 
-    @Override
     public String getName()
     {
         return name;
     }
 
-    @Override
     public Document setName(String name)
     {
         this.name = name;
         return this;
     }
 
-    @Override
     public Long getSize()
     {
         return size;
     }
 
-    @Override
     public Document setSize(Long size)
     {
         this.size = size;
         return this;
     }
 
-    @Override
     public String getFormat()
     {
         return format;
     }
 
-    @Override
     public Document setFormat(String format)
     {
         this.format = format;
         return this;
     }
 
-    @Override
     public Timestamp getDateUploaded()
     {
         return dateUploaded;
     }
 
-    @Override
     public Document setDateUploaded(Timestamp dateUploaded)
     {
         this.dateUploaded = dateUploaded;
         return this;
     }
 
-    @Override
     public Timestamp getDateLastModified()
     {
         return dateLastModified;
     }
 
-    @Override
     public Document setDateLastModified(Timestamp dateLastModified)
     {
         this.dateLastModified = dateLastModified;
         return this;
     }
 
-    @Override
     public User getUser()
     {
         return user;
     }
 
-    @Override
     public Document setUser(User user)
     {
         this.user = user;
